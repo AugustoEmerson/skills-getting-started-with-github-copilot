@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="participants-section">
             <div class="participants-header">
               <strong>Participants</strong>
-              <span class="participants-count">${details.participants.length} signed up</span>
+              <span class="participants-count" aria-label="${details.participants.length} participants signed up">${details.participants.length} signed up</span>
             </div>
             <ul class="participants-list"></ul>
           </div>
