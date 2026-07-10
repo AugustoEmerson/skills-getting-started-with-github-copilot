@@ -94,7 +94,7 @@ section h3 {
   color: #1a237e;
 }
 
-.participants-header span {
+.participants-count {
   flex: 0 0 auto;
   padding: 3px 8px;
   border-radius: 999px;
