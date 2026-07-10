@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Clear loading message
       activitiesList.innerHTML = "";
-        activitySelect.innerHTML = '<option value="">-- Select an activity --</option>';
+      activitySelect.innerHTML = '<option value="">-- Select an activity --</option>';
 
       // Populate activities list
       Object.entries(activities).forEach(([name, details]) => {
@@ -60,7 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
           <div class="participants-section">
-            <strong>Participants:</strong>
+            <div class="participants-header">
+              <strong>Participants</strong>
+              <span>${details.participants.length} signed up</span>
+            </div>
             <ul class="participants-list"></ul>
           </div>
         `;
