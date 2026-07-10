@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok) {
         showMessage(result.message, "success");
-        fetchActivities();
+        await fetchActivities();
       } else {
         showMessage(result.detail || "An error occurred", "error");
       }
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to fetch activities from API
   async function fetchActivities() {
     try {
-      const response = await fetch("/activities");
+      const response = await fetch("/activities", { cache: "no-store" });
       const activities = await response.json();
 
       // Clear loading message
@@ -60,7 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
           <div class="participants-section">
-            <strong>Participants:</strong>
+            <div class="participants-header">
+              <strong>Participants</strong>
+              <span class="participants-count" aria-label="${details.participants.length} participants signed up">${details.participants.length} signed up</span>
+            </div>
             <ul class="participants-list"></ul>
           </div>
         `;
@@ -127,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.ok) {
         showMessage(result.message, "success");
         signupForm.reset();
-        fetchActivities();
+        await fetchActivities();
       } else {
         showMessage(result.detail || "An error occurred", "error");
       }
